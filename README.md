@@ -30,6 +30,8 @@
     }
 **Nota:** Django y su ORM se encargan de crear toda la estructura de la base de datos, y ya tiene definidas unas tablas para su control, debido a esto, no se genera un script sql a parte para generar la estructura de la base de datos, solo para crear la base de datos donde se va hacer la estructura dada por los modelos y Django
 
+- Script para crear la base de datos: CREATE DATABASE "prueba-transporte";
+
 
 ## 4. Hacer la migraciones de los modelos
     Ingresar a la carpeta transporte (principal), donde se encuentra el archivo manage.py
