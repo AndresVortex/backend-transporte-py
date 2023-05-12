@@ -41,7 +41,7 @@ class DriveUpdateView(UpdateAPIView):
                 serializer_class.save()
                 return Response(response.success(serializer_class.data, status.HTTP_202_ACCEPTED, 'Conductor actualizado'), status.HTTP_202_ACCEPTED )
             else:
-                return Response(response.serverError(serializer_class.errors, status.HTTP_406_NOT_ACCEPTABLE, 'Faltan datos'), status.HTTP_406_NOT_ACCEPTABLE )
+                return Response(response.serverError(serializer_class.errors, status.HTTP_406_NOT_ACCEPTABLE, 'Datos incorrectos o faltantes'), status.HTTP_406_NOT_ACCEPTABLE )
         except Exception as err:
             return Response(response.serverError(err, status.HTTP_500_INTERNAL_SERVER_ERROR, 'Algo salio mal' ), status.HTTP_500_INTERNAL_SERVER_ERROR)
 
