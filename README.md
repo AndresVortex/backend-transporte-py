@@ -28,6 +28,7 @@
         'PORT': '5432',
     }
     }
+**Nota:** Django y su ORM se encargan de crear toda la estructura de la base de datos, y ya tiene definidas unas tablas para su control, debido a esto, no se genera un script sql a parte para generar la estructura de la base de datos, solo para crear la base de datos donde se va hacer la estructura dada por los modelos y Django
 
 
 ## 4. Hacer la migraciones de los modelos
@@ -51,3 +52,14 @@
 
 # Proceso de desarrollo 
 - Se trabajo con Django y Django rest framework enfocado a clases para tener un código mas organizado y escalable. nos permiten tener mayor flexibilidad al momento de manejar las solicitudes y respuestas http. También nos favorece en aplicar el principio de responsabilidad única donde la clase o modulo solo debe tener una sola responsabilidad.   
+
+## Requerimientos dados por el cliente
+- Registrar los vehículos que se tienen disponibles para realizar los pedidos.
+- Registrar los conductores que estan contratados por la empresa.
+- Asociar un conductor a uno o varios vehículos. En este punto se espera que al tener un conductor seleccionado solo cargue los vehículos que NO tiene asignados para realizar la asignación.
+- Desasociar un conductor de un vehículo. En este punto se espera que al tener un conductor seleccionado solo cargue los vehículos que YA han sido asignados previamente para quitar la asociación.
+## Restricciones implícitas del dominio
+- Un conductor no puede tener duplicidad de identificación
+- Un vehículo no puede tener duplicidad en la placa
+- Para asociar o desasociar un conductor a un vehículo, el conductor debe ser validado en la base de datos 
+- Para asociar o desasociar un conductor de un vehículo, el vehículo debe ser validado en la base de datos 
