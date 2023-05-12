@@ -21,7 +21,7 @@
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nombre-db',
+        'NAME': 'prueba-transporte',
         'USER': 'nombre usuario',
         'PASSWORD': 'password',
         'HOST': 'localhost',
