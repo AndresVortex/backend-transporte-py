@@ -7,10 +7,13 @@ from .models import Vehicle
 from conductor.models import Driver
 from transporte.helpers import response
 # Create your views here.
+
+#Clase para crear los vehículos
 class VehicleCreateView(CreateAPIView):
     
     
-    
+    # Método post
+    # Se encarga de recibir la data enviada en la petición post y validar por medio del serializador que los datos sean correctos  
     def post(self, request):
 
         try:
@@ -26,10 +29,12 @@ class VehicleCreateView(CreateAPIView):
             return Response(response.serverError(err, status.HTTP_500_INTERNAL_SERVER_ERROR, 'Algo salio mal' ), status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+# Clase para listar los vehículos que no tienen un conductor asignado
 class VehicleNoneListView(ListCreateAPIView):
     
     queryset = Vehicle.objects.all().filter(conductor_id=None)
     serializer_class = VehicleSerializer
+    
     def list(self, request):
         # Note the use of `get_queryset()` instead of `self.queryset`
         try:
@@ -39,6 +44,7 @@ class VehicleNoneListView(ListCreateAPIView):
         except Exception as err:
             return Response(response.serverError(err, status.HTTP_500_INTERNAL_SERVER_ERROR, 'Algo salio mal'), status= status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+# Clase para listar los vehículos que ya están asignados a un conductor  
 class VehicleListView(ListCreateAPIView):
     serializer_class = VehicleSerializer
 
@@ -73,6 +79,23 @@ class VehicleListView(ListCreateAPIView):
     #     except Exception as err:
     #         return Response(response.serverError(err, status.HTTP_500_INTERNAL_SERVER_ERROR, 'Algo salio mal'), status= status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+# Clase para listar todos los vehículos
+class VehicleAllListView(ListCreateAPIView):
+    
+    queryset = Vehicle.objects.all().values()
+    serializer_class = VehicleSerializer
+    
+    def list(self, request):
+        # Note the use of `get_queryset()` instead of `self.queryset`
+        try:
+            queryset = self.get_queryset()
+            serializer = VehicleSerializer(queryset, many=True)
+            return Response(response.success(serializer.data, 200, 'Lista de vehículos'))
+        except Exception as err:
+            return Response(response.serverError(err, status.HTTP_500_INTERNAL_SERVER_ERROR, 'Algo salio mal'), status= status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# Clase para asociar un conductor a un vehículo
 class VehicleJoinDriverView(UpdateAPIView):
     serializer_class = VehicleJoinSerializer
 

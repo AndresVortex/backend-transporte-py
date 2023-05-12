@@ -9,7 +9,7 @@ from transporte.helpers import response
 from conductor.models import Driver
 # Create your views here.
 
-
+# Clase para crear un conductor
 class DriverCreateView(CreateAPIView):
     
     
@@ -29,6 +29,7 @@ class DriverCreateView(CreateAPIView):
             return Response(response.serverError(err, status.HTTP_500_INTERNAL_SERVER_ERROR, 'Algo salio mal' ), status.HTTP_500_INTERNAL_SERVER_ERROR)
             
 
+# Clase para actualizar un conductor
 class DriveUpdateView(UpdateAPIView):
 
     def update(self, request, pk):
