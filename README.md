@@ -50,6 +50,20 @@
 - psycopg2: Es la librería que nos ayuda a comunicarnos con la base de datos postgres
 - django-cors-headers: nos ayuda a controlar los cors de una petición hecha por el cliente
 
+### versiones
+- asgiref==3.6.0
+- Django==4.2.1
+- django-cors-headers==4.0.0
+- django-filter==23.2
+- djangorestframework==3.14.0
+- gunicorn==20.1.0
+- psycopg2==2.9.6
+- pytz==2023.3
+- sqlparse==0.4.4
+- tzdata==2023.3
+- whitenoise==6.4.0
+
+
 # Proceso de desarrollo 
 - Se trabajo con Django y Django rest framework enfocado a clases para tener un código mas organizado y escalable. nos permiten tener mayor flexibilidad al momento de manejar las solicitudes y respuestas http. También nos favorece en aplicar el principio de responsabilidad única donde la clase o modulo solo debe tener una sola responsabilidad.   
 
